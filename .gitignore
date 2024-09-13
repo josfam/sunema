@@ -1,3 +1,10 @@
+# tests
+experiments/
+main-*.py
+
+# sqlite db
+sunema.db
+
 # virtual environments
 venv-sunema/
 
