@@ -1,5 +1,6 @@
 from flask import Flask
 from models.engine.database import db
+from views import app_views
 
 # from .models import User  # Import your models here
 # from .routes import main  # Assuming you have a blueprint named 'main'
@@ -15,6 +16,12 @@ def create_app(config_name):
     # Initialize extensions
     db.init_app(app)
 
+    # create database tables
+    with app.app_context():
+        db.create_all()
+
     # # Register blueprints
+    app.register_blueprint(app_views)
     # app.register_blueprint(main)
+
     return app
