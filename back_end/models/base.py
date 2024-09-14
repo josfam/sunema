@@ -6,8 +6,10 @@
 class Base:
     """Base class from which other models will inherit"""
 
+    queryDB = None
+
     def __init__(self):
-        from db import DBQueries
+        from models.engine.database import DBQueries
 
         self.queryDB = DBQueries()
 
