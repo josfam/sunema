@@ -4,8 +4,9 @@
 
 from sqlalchemy import Column, Integer, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
 
-Base = declarative_base
+Base = declarative_base()
 
 
 class Watchlist(Base):
@@ -14,5 +15,8 @@ class Watchlist(Base):
     __tablename__ = 'watchlists'
 
     id = Column(Integer, primary_key=True, nullable=False, autoincrement=True)
-    user_id = Column(ForeignKey('users.id'), Integer, nullable=False)
+    user_id = Column(Integer, ForeignKey('users.id'), nullable=False)
     film_id = Column(Integer, nullable=False)
+
+    # Relationships
+    user = relationship('User', back_populates='watchlists')
