@@ -4,7 +4,7 @@
 
 # app = importlib.import_module("app")
 from .engine.database import db
-from .base import Base
+from models.base import Base
 
 
 class User(db.Model, Base):
@@ -19,3 +19,8 @@ class User(db.Model, Base):
     hashed_password = db.Column(db.String(250), nullable=False)
     session_id = db.Column(db.String(250), nullable=True)
     reset_token = db.Column(db.String(250), nullable=True)
+
+    def __init__(self, username, hashed_password):
+        Base.__init__(self)
+        self.username = username
+        self.hashed_password = hashed_password
