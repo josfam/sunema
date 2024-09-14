@@ -2,29 +2,21 @@
 """Entry point of app"""
 
 from flask import abort, Flask, jsonify, redirect, request
+from flask_sqlalchemy import SQLAlchemy
 from auth import Auth
 
 app = Flask(__name__)
 AUTH = Auth()
 
 
+# configure app with sqlite uri
+app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///sunema.db"
+
+
 @app.route("/", methods=["GET"], strict_slashes=False)
 def index():
     """GET route to return homepage."""
     return jsonify({"message": "Bienvenue!"})
-
-
-@app.route("/users", methods=["POST"], strict_slashes=False)
-def register_user():
-    """POST /users route for registering a new user."""
-    username = request.form.get("username")
-    password = request.form.get("password")
-
-    try:
-        user = AUTH.register_user(username, password)
-        return jsonify({"username": user.username, "message": "user created"}), 200
-    except ValueError:
-        return jsonify({"message": "username already registered"}), 400
 
 
 @app.route("/sessions", methods=["POST"], strict_slashes=False)
@@ -60,6 +52,22 @@ def logout():
     return redirect("/")
 
 
+@app.route("/users", methods=["POST"], strict_slashes=False)
+def register_user():
+    """POST /users route for registering a new user."""
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    try:
+        user = AUTH.register_user(username, password)
+        return (
+            jsonify({"username": user.username, "message": "user created"}),
+            200,
+        )
+    except ValueError:
+        return jsonify({"message": "username already registered"}), 400
+
+
 @app.route("/profile", methods=["GET"], strict_slashes=False)
 def profile():
     """GET /profile route to get user profile using session_id cookie."""
@@ -76,4 +84,9 @@ def profile():
 
 
 if __name__ == '__main__':
+    db = SQLAlchemy()
+    db.init_app(app)  # bind the app to the sqlalchemy extension
+    # create database tables
+    with app.app_context():
+        db.create_all()
     app.run(debug=True)
