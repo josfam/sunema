@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Entry point of app"""
 
-from flask import Flask, jsonify, request
+from flask import abort, Flask, jsonify, request
 from auth import Auth
 
 app = Flask(__name__)
@@ -25,6 +25,21 @@ def register_user():
         return jsonify({"username": user.username, "message": "user created"}), 200
     except ValueError:
         return jsonify({"message": "username already registered"}), 400
+
+
+@app.route("/sessions", methods=["POST"], strict_slashes=False)
+def login():
+    """POST /sessions route for user login."""
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    if not AUTH.valid_login(username, password):
+        abort(401)  # Unauthorized access
+
+    session_id = AUTH.create_session(username)
+    response = jsonify({"username": username, "message": "logged in"})
+    response.set_cookie("session_id", session_id)
+    return response
 
 
 if __name__ == '__main__':
