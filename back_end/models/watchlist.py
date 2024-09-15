@@ -2,7 +2,7 @@
 
 """Watchlist model for the application"""
 
-from ..app import db
+from back_end.models.engine.database import db
 from base import Base
 
 
