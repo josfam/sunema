@@ -14,7 +14,7 @@ class DBQueries:
 
     def find_user_by(self, **kwargs):
         """Find a user by arbitrary keyword arguments."""
-        from models.user import User
+        from back_end.models.user import User
 
         query = db.select(User).filter_by(**kwargs)
         user = db.session.execute(query).scalars().first()

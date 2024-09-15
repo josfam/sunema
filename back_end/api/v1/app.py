@@ -1,4 +1,4 @@
-from api.v1 import create_app
+from back_end.api.v1 import create_app
 from flask import jsonify
 
 app = create_app({'DEVELOPMENT': True})

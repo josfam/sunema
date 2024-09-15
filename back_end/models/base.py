@@ -9,7 +9,7 @@ class Base:
     queryDB = None
 
     def __init__(self):
-        from models.engine.database import DBQueries
+        from back_end.models.engine.database import DBQueries
 
         self.queryDB = DBQueries()
 
