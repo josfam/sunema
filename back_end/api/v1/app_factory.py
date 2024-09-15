@@ -1,8 +1,8 @@
 from flask import Flask
-from models.engine.database import db
-from views import app_views
+from back_end.models.engine.database import db
+from back_end.views import app_views
 
-def create_app(config_name):
+def create_app(config=None):
     """Creates and returns the flask application instance"""
 
     app = Flask(__name__)
@@ -10,6 +10,11 @@ def create_app(config_name):
     # Configure your app
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///sunema.db"
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['TESTING'] = False  # dev environment by default
+
+    # apply custom configuration if provided
+    if config:
+        app.config.update(config)
 
     # Initialize extensions
     db.init_app(app)
