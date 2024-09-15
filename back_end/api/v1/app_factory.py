@@ -2,6 +2,7 @@ from flask import Flask
 from back_end.models.engine.database import db
 from back_end.views import app_views
 
+
 def create_app(config=None):
     """Creates and returns the flask application instance"""
 
