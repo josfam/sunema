@@ -2,11 +2,9 @@ from flask import Flask
 from models.engine.database import db
 from views import app_views
 
-# from .models import User  # Import your models here
-# from .routes import main  # Assuming you have a blueprint named 'main'
-
-
 def create_app(config_name):
+    """Creates and returns the flask application instance"""
+
     app = Flask(__name__)
 
     # Configure your app

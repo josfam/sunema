@@ -1,6 +1,6 @@
 from views import app_views
 from flask import request, jsonify
-from auth import Auth
+from utils.auth import Auth
 from sqlalchemy.orm.exc import NoResultFound
 
 AUTH = Auth()
