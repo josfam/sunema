@@ -3,7 +3,7 @@
 import bcrypt
 import uuid
 from sqlalchemy.orm.exc import NoResultFound
-from models.user import User
+from back_end.models.user import User
 
 
 def _hash_password(password: str) -> bytes:
@@ -23,7 +23,7 @@ class Auth:
     """Auth class to interact with the authentication database."""
 
     def __init__(self):
-        from models.engine.database import DBQueries
+        from back_end.models.engine.database import DBQueries
 
         self._db = DBQueries()
 

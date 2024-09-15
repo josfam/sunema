@@ -4,7 +4,7 @@
 
 # app = importlib.import_module("app")
 from .engine.database import db
-from models.base import Base
+from back_end.models.base import Base
 
 
 class User(db.Model, Base):
