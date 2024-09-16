@@ -1,0 +1,33 @@
+.userWeather {
+	width: 80%;
+	height: 90px;
+	padding: 0px 40px 0px 40px;
+	background-color: hsl(50, 89%, 78%);
+	border: 2px solid hsl(50, 33%, 59%);
+	border-radius: 20px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.weather-icon-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+#weather-icon {
+	width: 80px;
+	height: auto;
+}
+
+#temperature-number {
+	font-size: 30px;
+	border-bottom: 8px solid hsl(14, 100%, 50%);
+	/* font-weight: 500; */
+}
+
+#user-greeting {
+	font-size: 30px;
+}
