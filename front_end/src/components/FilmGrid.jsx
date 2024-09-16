@@ -4,7 +4,8 @@ import FilmCard from './FilmCard';
 
 function FilmGrid () {
 	const [films, setFilms] = useState([]);  // State to hold the list of films
-    const [error, setError] = useState(null); // Error state
+    const [isLoading, setIsLoading] = useState(true); // for skeleton loading
+	const [error, setError] = useState(null); // Error state
 
 	useEffect(() =>{
 		// fetch films from the backend
@@ -27,6 +28,8 @@ function FilmGrid () {
 			} catch (err) {
 				console.log('Error while fetching films', err);
 				setError('An error occurred while fetching films');
+			} finally {
+				setIsLoading(false); // stop loading when the data is fetched
 			}
 		};
 		getFilmsByWeather();
@@ -40,16 +43,24 @@ function FilmGrid () {
 
 	return (
 		<section id="home-film-container">
-			{/* Map over films and render a film card for each film found */}
-			{films.map(film => (
+			{isLoading ? (
+				// Render 6 skeleton placeholders while loading
+                Array.from({ length: 6 }).map((_, index) => (
+                    <FilmCard key={index} isLoading={true} />
+                ))
+			) : (
+				/* Map over films and render a film card for each film found */
+				films.map(film => (
 				<FilmCard
 					key={film.id}
 					posterPath={film.poster_path}
 					title={film.title}
+					isLoading={false}
 				/>
-			))}
+				))
+			)}
 		</section>
-	)
+	);
 }
 
 export default FilmGrid;
