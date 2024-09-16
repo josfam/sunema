@@ -3,6 +3,8 @@ from flask_cors import CORS
 from back_end.models.engine.database import db
 from back_end.views import app_views
 from back_end.views import weather_views
+from back_end.views import film_views
+
 
 def create_app(config=None):
     """Creates and returns the flask application instance"""
@@ -31,5 +33,6 @@ def create_app(config=None):
     # # Register blueprints
     app.register_blueprint(app_views)
     app.register_blueprint(weather_views)
+    app.register_blueprint(film_views)
 
     return app
