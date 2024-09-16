@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import UserWeatherSection from "../components/UserWeather";
+import FilmGrid from "../components/FilmGrid";
 import "../styles/Home.css"
 
 function Home() {
@@ -43,6 +44,7 @@ function Home() {
 	return (
 	  <div className="home">
 		<UserWeatherSection latitude={location.latitude} longitude={location.longitude}/>
+		<FilmGrid/>
 		{error ? (
 		  <p>Error: {error}</p>
 		) : (
