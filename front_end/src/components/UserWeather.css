@@ -2,8 +2,7 @@
 	width: 80%;
 	height: 90px;
 	padding: 0px 40px 0px 40px;
-	background-color: hsl(50, 89%, 78%);
-	border: 2px solid hsl(50, 33%, 59%);
+	background-color: #19304C;
 	border-radius: 20px;
 	display: flex;
 	justify-content: space-between;
@@ -24,10 +23,13 @@
 
 #temperature-number {
 	font-size: 30px;
-	border-bottom: 8px solid hsl(14, 100%, 50%);
+	border-bottom: 8px solid #f8f8fa;
+	color: #f8f8fa
 	/* font-weight: 500; */
 }
 
 #user-greeting {
+	color: #f8f8fa;
 	font-size: 30px;
+	font-weight: 300;
 }
