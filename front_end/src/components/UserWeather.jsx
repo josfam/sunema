@@ -13,27 +13,26 @@ function UserWeatherSection ( { latitude, longitude } ) {
 
 	useEffect(() => {
 		const getWeather = async function(){
-			try {
-				const response = await fetch(
-					`/api/v1/weather/current?lat=${latitude}&lon=${longitude}`, {
-						method: 'get',
-						headers: {
-							'Content-Type': 'application/JSON'
-						}
-					});
-				console.log('Response status:', response.status); // DEBUG
-				const info = await response.json();
-				console.log(info);
-				if (response.ok) {	
-					setTemperature(info.data.main.temp);
-					setIcon(info.data.weather[0].icon)
-				} else {
-					setError(info.message);
-				}
-			} catch (error) {
-				console.log(`error`, error);
+		try {
+			const response = await fetch(
+				`/api/v1/weather/current?lat=${latitude}&lon=${longitude}`, {
+					method: 'get',
+					headers: {
+						'Content-Type': 'application/JSON'
+					}
+				});
+			console.log('Response status:', response.status); // DEBUG
+			const info = await response.json();
+			console.log(info);
+			if (response.ok) {	
+				setTemperature(info.data.main.temp);
+				setIcon(info.data.weather[0].icon)
+			} else {
+				setError(info.message);
 			}
-		}
+		} catch (error) {
+			console.log(`error`, error);
+		}};
 		getWeather();
 	}, [latitude, longitude]);
 
@@ -48,6 +47,7 @@ function UserWeatherSection ( { latitude, longitude } ) {
 			</div>
 		) : (
 		<div className="weather-icon-container">
+			{/* load placeholder image as temperature is being fetched */}
 			<div id="temperature-number">{ temperature ? `${temperature.toFixed(1)} °C` : `⏳`}</div>
 			<img
 				id="weather-icon"
