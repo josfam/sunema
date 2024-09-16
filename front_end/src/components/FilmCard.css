@@ -1,0 +1,19 @@
+.film-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.film-card img{
+	height: 420px;
+	width: auto;
+	border-radius: 20px;
+}
+
+.film-title {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	font-size: 25px;
+	font-weight: 400;
+}
