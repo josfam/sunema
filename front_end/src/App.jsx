@@ -4,6 +4,8 @@ import Login from './pages/Login.jsx';
 import SignUp from './pages/SignUp.jsx';
 import Home from './pages/Home.jsx';
 import 'react-loading-skeleton/dist/skeleton.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App () {
 

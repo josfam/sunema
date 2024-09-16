@@ -1,0 +1,36 @@
+.home {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	.home__top{
+		background-color: rgba(134, 179, 233,0.5);
+		width: 100%;
+		margin-bottom: 10px;
+		padding: 5px;
+		position: relative;
+		height: 20px;
+
+		.bars{
+			position: absolute;
+			right: 200px;
+			top: 8px;
+			z-index: -1;
+		}
+	}
+
+	.bottom{
+		background-color: #67717E;
+		width: 100%;
+		display: flex;
+		padding: 20px;
+		justify-content: center;
+		align-items: center;
+
+		.git{
+			font-size: 40px;
+			color: white;
+		}
+	}
+}
