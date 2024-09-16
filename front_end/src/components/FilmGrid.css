@@ -1,0 +1,14 @@
+#home-film-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	margin-top: 40px;
+	row-gap: 0px;
+	/* gap: 60px; */
+	width: 80%;
+	min-height: 1100px;
+	padding: 40px 40px 40px 40px;
+	margin-top: 40px;
+	background-color: hsl(50, 89%, 78%);
+	border-radius: 20px;
+	border: 2px solid hsl(50, 33%, 59%);
+}
