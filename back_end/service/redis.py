@@ -1,3 +1,6 @@
+"""
+Module: redis
+"""
 import redis
 import os
 
