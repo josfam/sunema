@@ -3,8 +3,8 @@
     place-items: center;
     flex-direction: column;
     width: 70vw;
-    max-width: 450px;
-    height: 65vh;
+    max-width: 514px;
+    height: 74vh;
     gap: 3rem;
     padding: 2rem;
     border-radius: 8px;
@@ -22,12 +22,12 @@ form {
     display: flex;
     flex-direction: column;
     padding: 2rem;
-    width: 85%;
+    width: 99%;
     gap: 2rem;
 }
 
 input {
-    height: 2em;
+    height: 2.4em;
     font-size: 1rem;
 }
 
