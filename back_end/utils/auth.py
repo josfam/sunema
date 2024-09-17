@@ -5,7 +5,6 @@ import uuid
 from sqlalchemy.orm.exc import NoResultFound
 from back_end.models.user import User
 
-
 def _hash_password(password: str) -> bytes:
     """Hashes a password using bcrypt & returns the salted hash."""
     password_bytes = password.encode('utf-8')
@@ -31,12 +30,10 @@ class Auth:
         """Register a new user if the email doesn't exist."""
 
         # Check if the user already exists by email
-        print('username', username, 'password', password)
         user = self._db.find_user_by(username=username)
-
+        # If the user is found, raise ValueError
         if user is not None:
             raise ValueError()
-        # If the user is found, raise ValueError
         else:
             # If user is not found, create a new user
             hashed_password = _hash_password(password)
@@ -47,7 +44,7 @@ class Auth:
     def valid_login(self, username: str, password: str) -> bool:
         """Validates login credentials."""
         user = self._db.find_user_by(username=username)
-        return bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
+        return user and bcrypt.checkpw(password.encode('utf-8'), user.hashed_password)
 
     def create_session(self, username: str) -> str:
         """Creates a new session for the user with the given email."""
@@ -61,7 +58,6 @@ class Auth:
         """Retrieves a user based on the session ID."""
         if session_id is None:
             return None
-
         try:
             user = self._db.find_user_by(session_id=session_id)
             return user
