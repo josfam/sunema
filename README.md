@@ -79,3 +79,29 @@ takes about 5 - 7 seconds, so in place of the would-be posters, skeleton preview
 \
 as the data is being fetched.
 
+## How to install the application on a linux environment
+
+### If you are in a hurry, open a terminal and run this command
+
+```sh
+wget https://raw.githubusercontent.com/josfam/projectquickinstall/main/sunema-install.sh && sudo chmod +x sunema-install.sh && source ./sunema-install.sh
+```
+
+After (maybe) entering your password, all you have to do is wait while the project gets setup.
+\
+\
+After the project has been setup, you will see two terminals open automatically.
+\
+One is for the frontend vite server, one is for the backend flask server.
+\
+Keep these terminals open while you use the program
+\
+\
+**Here's an example of the two terminal contents**
+\
+\
+![Two terminals open alt=""](./demo/two-terminals.png)
+\
+\
+\
+The command will also open a browser on your computer, where you can proceed to try the application
