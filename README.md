@@ -10,7 +10,18 @@ This was also our submission for the second round (round of 11 💻🏆) of the 
 community competition.
 \
 \
-Challenge name: API Innovation Challenge
+Challenge name: API Innovation don't see why it couldn't come from some of you as part of the community to start encouraging your peers to do so here on DiscordChallenge
+
+---
+
+## Table of Contents
+
+- [APIs used](#apis-used)
+  - [Geolocation](#1-geolocation-api-browser-builtin)
+  - [OpenWeatherMap](#2-the-openweathermap-api)
+  - [The Movie Database (TMDB)](#3-the-movie-database-tmdb-api)
+- [How to install and run (unix)](#how-to-install-the-application-on-a-linux-environment)
+  - [Quick installation command](#if-you-are-in-a-hurry-open-a-terminal-and-run-this-command)
 
 ---
 
