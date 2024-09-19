@@ -9,6 +9,7 @@ import "../styles/Home.scss";
 function Home() {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
   const [error, setError] = useState(null);
+  const [temperature, setTemperature] = useState(null); // handles temperature state
 
   useEffect(() => {
     if (navigator.geolocation) {
@@ -41,8 +42,15 @@ function Home() {
   return (
     <div className="home">
 	  <Nav/>
-      <UserWeatherSection latitude={location.latitude} longitude={location.longitude} />
-      <FilmGrid />
+      <UserWeatherSection
+		latitude={location.latitude}
+		longitude={location.longitude}
+		temperature={temperature} // pass temperature
+		setTemperature={setTemperature} // pass the temperature setter function
+	  />
+      <FilmGrid
+	  	temperature={temperature}
+	  />
       {error ? <p>Error: {error}</p> : console.log(`Latitude: ${location.latitude}, Longitude: ${location.longitude}`)}
       <Footer />
     </div>

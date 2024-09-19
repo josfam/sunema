@@ -5,36 +5,38 @@ import "./UserWeather.css"
 /** For the section of the home page that has the user greeting, and the weather
  * details
 */
-function UserWeatherSection ( { latitude, longitude } ) {
+function UserWeatherSection ( { latitude, longitude, temperature, setTemperature } ) {
 	// state to store weather data
-	const [ temperature, setTemperature ] = useState(null); // setting the temperature reading
 	const [ icon, setIcon ] = useState(null);
 	const [ error, setError ] = useState(null);
 
 	useEffect(() => {
-		const getWeather = async function(){
-		try {
-			const response = await fetch(
+		if (latitude && longitude) {
+			const getWeather = async function(){
+			try {
+				const response = await fetch(
 				`/api/v1/weather/current?lat=${latitude}&lon=${longitude}`, {
 					method: 'get',
 					headers: {
 						'Content-Type': 'application/JSON'
 					}
 				});
-			console.log('Response status:', response.status); // DEBUG
-			const info = await response.json();
-			console.log(info);
-			if (response.ok) {	
-				setTemperature(info.data.main.temp);
-				setIcon(info.data.weather[0].icon)
-			} else {
-				setError(info.message);
-			}
-		} catch (error) {
-			console.log(`error`, error);
-		}};
-		getWeather();
-	}, [latitude, longitude]);
+				console.log('Response status:', response.status); // DEBUG
+				const info = await response.json();
+				console.log(info);
+				// only set temperature and icon if the data actually exists
+				if (response.ok && info.data && info.data.main) {	
+					setTemperature(info.data.main.temp);
+					setIcon(info.data.weather[0].icon)
+				} else {
+					setError(info.message);
+				}
+			} catch (error) {
+				console.log(`error`, error);
+			}};
+			getWeather();
+		}
+	}, [latitude, longitude, setTemperature]);
 
 
 	return (
@@ -63,7 +65,9 @@ function UserWeatherSection ( { latitude, longitude } ) {
 // prop types for the component
 UserWeatherSection.propTypes = {
 	latitude: PropTypes.number,
-	longitude: PropTypes.number
+	longitude: PropTypes.number,
+	setTemperature: PropTypes.func.isRequired,
+	temperature: PropTypes.number
   };
 
 export default UserWeatherSection;
