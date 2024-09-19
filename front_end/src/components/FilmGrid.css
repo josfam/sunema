@@ -1,9 +1,9 @@
 #home-film-container {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	/* grid-template-columns: repeat(3, 1fr); */
+	grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
 	margin-top: 40px;
-	row-gap: 0px;
-	/* gap: 60px; */
+	row-gap: 60px;
 	width: 80%;
 	min-height: 1100px;
 	padding: 40px 40px 40px 40px;
