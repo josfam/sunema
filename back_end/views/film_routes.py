@@ -22,15 +22,15 @@ def get_films_by_weather():
 
     API_KEY = os.getenv('TMDB_API_KEY')
     print(f'TMDB_API_KEY: {API_KEY}')  # DEBUG
-
     try:
-        temperature = request.args.temperature
+        temp_whole = request.args['temperature'].split('.')[0]
+        print(f'{temp_whole}')
+        temperature = int(temp_whole)
     except AttributeError:
         temperature = DEFAULT_TEMPERATURE
 
-    value = int(temperature)
-    print(f'Using temperature value: {value}')  # DEBUG
-    weather = get_temperature_desc(value)
+    print(f'Using temperature value: {temperature}')  # DEBUG
+    weather = get_temperature_desc(temperature)
     genre_ids = get_genres(weather)
 
     all_films = {}
