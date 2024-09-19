@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
 import UserWeatherSection from "../components/UserWeather";
 import FilmGrid from "../components/FilmGrid";
+import Footer from "../components/Footer";
+import Nav from "../components/Nav";
 import "../styles/Home.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
+
 
 function Home() {
   const [location, setLocation] = useState({ latitude: null, longitude: null });
@@ -40,15 +40,11 @@ function Home() {
 
   return (
     <div className="home">
-      <div className="home__top">
-        <FontAwesomeIcon icon={faBars} className="bars" aria-hidden="true" />
-      </div>
+	  <Nav/>
       <UserWeatherSection latitude={location.latitude} longitude={location.longitude} />
       <FilmGrid />
       {error ? <p>Error: {error}</p> : console.log(`Latitude: ${location.latitude}, Longitude: ${location.longitude}`)}
-      <div className="bottom">
-        <FontAwesomeIcon icon={faGithub} className="git" aria-hidden="true" />
-      </div>
+      <Footer />
     </div>
   );
 }
