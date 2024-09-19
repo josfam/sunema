@@ -13,6 +13,8 @@ community competition.
 Challenge name: API Innovation don't see why it couldn't come from some of you as part of the community to start encouraging your peers to do so here on DiscordChallenge
 
 ---
+![sunema with location on](./demo/location-on.gif)
+---
 
 ## Table of Contents
 
@@ -39,6 +41,10 @@ browser, and can choose not to give their location.
 Should the user decline this location request, the application then uses a [default
 \
 location](https://www.google.com/maps/place/Mt+Hollywood/@34.136635,-118.3998476,10.75z/data=!4m6!3m5!1s0x80c2bf7da13f1811:0xacb38675764f681!8m2!3d34.1280637!4d-118.3011874!16s%2Fg%2F1237c_vw?entry=ttu&g_ep=EgoyMDI0MDkxMS4wIKXMDSoASAFQAw%3D%3D)
+
+#### Films with location turned off
+
+![sunema with location off](./demo/location-off.gif)
 
 ### 2. The OpenWeatherMap API
 
