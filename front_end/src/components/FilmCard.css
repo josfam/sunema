@@ -22,6 +22,10 @@
 	margin-top: 10px;
 	font-size: 25px;
 	font-weight: 400;
+	max-width: 294px;
+	overflow-y: hidden;
+	text-overflow: ellipsis;
+	text-wrap: nowrap;
 }
 
 
