@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import './FilmGrid.css'
 import FilmCard from './FilmCard';
+import propTypes from 'prop-types';
 
-function FilmGrid () {
+function FilmGrid ({ temperature }) {
 	const [films, setFilms] = useState([]);  // State to hold the list of films
     const [isLoading, setIsLoading] = useState(true); // for skeleton loading
 	const [error, setError] = useState(null); // Error state
@@ -10,30 +11,36 @@ function FilmGrid () {
 	useEffect(() =>{
 		// fetch films from the backend
 		const getFilmsByWeather = async () => {
-			try{
-				const response = await fetch('/api/v1/films/by-weather', {
-					method: 'get',
-					headers: {
-						'Content-Type': 'application/json'
+			console.log(`[FilmGrid]-out The temperature is now ${temperature}`) // DEBUG
+			if (temperature !== null && temperature !== undefined) {
+				console.log(`[FilmGrid]-in The temperature is now ${temperature}`) // DEBUG
+				try{
+					const api_url = `/api/v1/films/by-weather?temperature=${temperature}`
+					console.log(`api url temperature ===> `, api_url) // DEBUG
+					const response = await fetch(api_url, {
+						method: 'get',
+						headers: {
+							'Content-Type': 'application/json'
+						}
+					})
+					const data = await response.json();
+					
+					if (response.ok) {
+						console.log('The data is :===> ', data); // DEBUG
+						setFilms(Object.values(data.data));
+					} else {
+						setError('Failed to load films');
 					}
-				})
-				const data = await response.json();
-
-				if (response.ok) {
-					console.log('The data is :===> ', data); // DEBUG
-					setFilms(Object.values(data.data));
-				} else {
-					setError('Failed to load films');
+				} catch (err) {
+					console.log('Error while fetching films', err);
+					setError('An error occurred while fetching films');
+				} finally {
+					setIsLoading(false); // stop loading when the data is fetched
 				}
-			} catch (err) {
-				console.log('Error while fetching films', err);
-				setError('An error occurred while fetching films');
-			} finally {
-				setIsLoading(false); // stop loading when the data is fetched
-			}
-		};
+			};
+		}
 		getFilmsByWeather();
-	}, []);
+	}, [temperature]);
 
 	if (error) {
 		return (
@@ -61,6 +68,10 @@ function FilmGrid () {
 			)}
 		</section>
 	);
+}
+
+FilmGrid.propTypes = {
+	temperature: propTypes.number
 }
 
 export default FilmGrid;
