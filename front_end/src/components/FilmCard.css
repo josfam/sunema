@@ -5,10 +5,11 @@
 	justify-content: center;
 	color: #D1E3FA;
 	transition: transform 2 s ease;
+
 }
 
 .film-card img:hover {
-	transform: translateY(-20px) scale(1.01); /* Move up by 20px and grow by 5% */
+	transform: translateY(-10px) scale(1.05);
 }
 
 .film-card img{
