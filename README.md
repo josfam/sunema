@@ -10,7 +10,7 @@ This was also our submission for the second round (round of 11 💻🏆) of the 
 community competition.
 \
 \
-Challenge name: API Innovation don't see why it couldn't come from some of you as part of the community to start encouraging your peers to do so here on DiscordChallenge
+Challenge name: API Innovation
 
 ---
 ![sunema with location on](./demo/location-on.gif)
