@@ -2,6 +2,7 @@ import os
 from random import randint
 from flask import request, jsonify
 from back_end.views import film_views
+from back_end.models.samples.sample_film import SampleFilm
 from dotenv import load_dotenv
 from back_end.utils.films import (
     MIN_RATING,
@@ -22,6 +23,10 @@ def get_films_by_weather():
 
     API_KEY = os.getenv('TMDB_API_KEY')
     print(f'TMDB_API_KEY: {API_KEY}')  # DEBUG
+    if not API_KEY:
+        # return films from the sample database
+        ...
+        return jsonify({'error': 'api key missing'}), 401
     try:
         temp_whole = request.args['temperature'].split('.')[0]
         print(f'{temp_whole}')
