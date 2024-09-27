@@ -24,6 +24,7 @@
 	font-weight: 400;
 	max-width: 294px;
 	overflow-y: hidden;
+	overflow-x: hidden;
 	text-overflow: ellipsis;
 	text-wrap: nowrap;
 }
