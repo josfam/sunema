@@ -25,7 +25,6 @@ def get_films_by_weather():
     print(f'TMDB_API_KEY: {API_KEY}')  # DEBUG
     if not API_KEY:
         # return films from the sample database
-        ...
         return jsonify({'error': 'api key missing'}), 401
     try:
         temp_whole = request.args['temperature'].split('.')[0]
@@ -40,8 +39,16 @@ def get_films_by_weather():
 
     all_films = {}
 
+    # construct the url parameters
+    prefix = 'https://api.themoviedb.org/3/discover/movie?'
+    api = f'api_key={API_KEY}'
+    genre = 'with_genres={}'
+    sort = 'sort_by=popularity.desc'
+    vote = f'vote_average.gte={MIN_RATING}'
+    date = f'release_date.gte={EARLIEST_DATE}'
+
     for genre_id in genre_ids:
-        url = f"https://api.themoviedb.org/3/discover/movie?api_key={API_KEY}&with_genres={genre_id}&sort_by=popularity.desc&vote_average.gte={MIN_RATING}&release_date.gte={EARLIEST_DATE}"
+        url = f"{prefix}&{api}&{vote}&{sort}&{vote}&{date}&" + genre.format(genre_id)
         movies = get_movies(url)
         page_count = int(
             movies['total_pages']
