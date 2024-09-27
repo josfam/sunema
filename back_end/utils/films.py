@@ -4,6 +4,7 @@ import requests
 from datetime import datetime as dt, timedelta
 
 MIN_RATING = 6
+MAX_FILMS_RETURNED = 6
 
 # genres and genre ids, as per TMDB's api
 genres_map = {
