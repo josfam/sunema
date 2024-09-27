@@ -28,7 +28,6 @@ Challenge name: API Innovation
   - [The Movie Database (TMDB)](#3-the-movie-database-tmdb-api)
 - [How to install and run (unix)](#how-to-install-the-application-on-a-linux-environment)
   - [Quick installation command](#a-if-you-are-in-a-hurry-open-a-terminal-and-run-this-command)
-  - [Step by step manual installation](#b-if-you-prefer-to-install-things-yourself-do-this-instead)
 
 ---
 
