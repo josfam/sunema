@@ -1,5 +1,9 @@
 # sunema
 
+## Movies, come rain or shine
+
+---
+
 A movie recommendation application, that uses the weather in your location to
 \
 recommend movies.
@@ -23,7 +27,8 @@ Challenge name: API Innovation
   - [OpenWeatherMap](#2-the-openweathermap-api)
   - [The Movie Database (TMDB)](#3-the-movie-database-tmdb-api)
 - [How to install and run (unix)](#how-to-install-the-application-on-a-linux-environment)
-  - [Quick installation command](#if-you-are-in-a-hurry-open-a-terminal-and-run-this-command)
+  - [Quick installation command](#a-if-you-are-in-a-hurry-open-a-terminal-and-run-this-command)
+  - [Step by step manual installation](#b-if-you-prefer-to-install-things-yourself-do-this-instead)
 
 ---
 
@@ -98,7 +103,7 @@ as the data is being fetched.
 
 ## How to install the application on a linux environment
 
-### If you are in a hurry, open a terminal and run this command
+### A. If you are in a hurry, open a terminal and run this command
 
 ```sh
 wget https://raw.githubusercontent.com/josfam/projectquickinstall/main/sunema-install.sh && sudo chmod +x sunema-install.sh && source ./sunema-install.sh
