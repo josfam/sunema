@@ -1,19 +1,17 @@
 import { useForm } from 'react-hook-form';
-import { UserService } from '../services/user-service';
+import  userService  from '../services/user-service';
 import '../styles/auth.css'
 import {useNavigate} from "react-router-dom";
-import {useState} from "react";
 
 
 const SignUp = () => {
-    const { register, handleSubmit, formState: { errors }, setError } = useForm();
-    // const { error, setError } = useState('');
+    const { register, handleSubmit, formState: { errors }, setError, clearErrors } = useForm();
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         // register new user
         try {
-            const response = await UserService.registerUser(data);
+            const response = await userService.registerUser(data);
             if (response.message === 'user created') {
                 navigate('/');
             }
@@ -22,6 +20,7 @@ const SignUp = () => {
                 type: 'manual',
                 message: 'Username already exists'
             })
+            window.setTimeout(() => clearErrors('auth_error'), 1000);
         }
     };
     return (
@@ -30,7 +29,11 @@ const SignUp = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
                 {errors.auth_error && <p>{errors.auth_error.message}</p>}
                 <input
-                    {...register('username', {required: 'Username is required'})}
+                    {...register('username', {
+                        required: 'Username is required',
+                        minLength: {value: 3, message: "Username must be at least 3 characters"},
+                        maxLength: {value: 32, message: "Username must be at most 32 characters"}
+                    })}
                     placeholder={'Enter your Username'}
                 />
                 {errors.username && <p>{errors.username.message}</p>}
