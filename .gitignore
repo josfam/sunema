@@ -13,6 +13,7 @@ node_modules/
 
 # config files
 .env
+._env
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

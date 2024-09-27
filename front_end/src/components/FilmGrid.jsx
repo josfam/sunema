@@ -29,7 +29,7 @@ function FilmGrid ({ temperature, setBannerMessage }) {
 						console.log('The data is :===> ', data); // DEBUG
 						setFilms(Object.values(data.data));
 						if (data.source === 'samples') {
-							const message = `You are seeing pre-selected sample films, because no TMBD API key was found.`
+							const message = `You are seeing pre-selected sample films, because your TMBD API key was not found.`
 							setBannerMessage(message)
 						} else {
 							setBannerMessage('')
