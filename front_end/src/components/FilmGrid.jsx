@@ -3,7 +3,7 @@ import './FilmGrid.css'
 import FilmCard from './FilmCard';
 import propTypes from 'prop-types';
 
-function FilmGrid ({ temperature }) {
+function FilmGrid ({ temperature, setBannerMessage }) {
 	const [films, setFilms] = useState([]);  // State to hold the list of films
     const [isLoading, setIsLoading] = useState(true); // for skeleton loading
 	const [error, setError] = useState(null); // Error state
@@ -28,6 +28,12 @@ function FilmGrid ({ temperature }) {
 					if (response.ok) {
 						console.log('The data is :===> ', data); // DEBUG
 						setFilms(Object.values(data.data));
+						if (data.source === 'samples') {
+							const message = `You are seeing pre-selected sample films, because no TMBD API key was found.`
+							setBannerMessage(message)
+						} else {
+							setBannerMessage('')
+						}
 					} else {
 						setError('Failed to load films');
 					}
@@ -40,7 +46,7 @@ function FilmGrid ({ temperature }) {
 			};
 		}
 		getFilmsByWeather();
-	}, [temperature]);
+	}, [temperature, setBannerMessage]);
 
 	if (error) {
 		return (
@@ -71,7 +77,8 @@ function FilmGrid ({ temperature }) {
 }
 
 FilmGrid.propTypes = {
-	temperature: propTypes.number
+	temperature: propTypes.number,
+	setBannerMessage: propTypes.func
 }
 
 export default FilmGrid;
