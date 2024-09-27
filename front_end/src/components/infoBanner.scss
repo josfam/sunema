@@ -1,0 +1,19 @@
+.info-banner {
+	width: 80%;
+	height: 80px;
+	border-radius: 20px;
+	margin-top: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: bisque;
+	font-size: 22px;
+}
+
+.info-note {
+	background-color: hsl(214, 80%, 90%);
+
+	p {
+		color: hsl(212, 50%, 45%);
+	}
+}
