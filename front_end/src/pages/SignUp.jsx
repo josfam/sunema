@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form';
-import  userService  from '../services/user-service';
+import  authService  from '../services/auth-service.js';
 import '../styles/auth.css'
 import {useNavigate} from "react-router-dom";
 
@@ -11,7 +11,7 @@ const SignUp = () => {
     const onSubmit = async (data) => {
         // register new user
         try {
-            const response = await userService.registerUser(data);
+            const response = await authService.registerUser(data);
             if (response.message === 'user created') {
                 navigate('/');
             }
