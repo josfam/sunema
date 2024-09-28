@@ -27,7 +27,9 @@ Challenge name: API Innovation
   - [OpenWeatherMap](#2-the-openweathermap-api)
   - [The Movie Database (TMDB)](#3-the-movie-database-tmdb-api)
 - [How to install and run (unix)](#how-to-install-the-application-on-a-linux-environment)
-  - [Quick installation command](#a-if-you-are-in-a-hurry-open-a-terminal-and-run-this-command)
+  - [Using the automated command](#a-if-you-are-in-a-hurry-open-a-terminal-and-run-this-command)
+  - [Manually installing things yourself](#b-if-you-prefer-to-install-things-yourself-heres-what-to-do)
+  - [A note about API keys](#note-about-api-keys)
 
 ---
 
@@ -126,3 +128,33 @@ Keep these terminals open while you use the program
 \
 \
 The command will also open a browser on your computer, where you can proceed to try the application
+
+### B. If you prefer to install things yourself, here's what to do
+
+- [Install and run the backend](./back_end/README.md#how-to-manually-install-and-run-the-backend)
+- [Install and run the frontend](./front_end/README.md#how-to-manually-install-and-run-the-frontend)
+
+---
+
+> ### Note about API keys
+>
+> #### Question: "But what if I do not have API keys?"
+>>
+>> That's fine.
+>> \
+>> If you are running this project locally, and you do not have the necessary API keys,
+>> \
+>> The application still works just fine.
+>> \
+>> The only caveat is that you will be viewing pre-selected sample films--loaded from our database in your browser.
+>>
+>
+> #### Question: "How do I get API keys?"
+>>
+>> First, create an account on both [TMDB](https://www.themoviedb.org/signup) and [OpenWeatherMap](https://home.openweathermap.org/users/sign_up).
+>> \
+>> Then go to the API pages for [TMDB](https://www.themoviedb.org/settings/api), and [OpenWeatherMap](https://home.openweathermap.org/api_keys) and request your API keys
+>
+> ...
+
+---
