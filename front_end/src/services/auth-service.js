@@ -1,5 +1,5 @@
 
-class UserService {
+class AuthService {
 
 
     registerUser(data) {
@@ -38,4 +38,4 @@ class UserService {
     }
 }
 
-export default new UserService();
+export default new AuthService();
