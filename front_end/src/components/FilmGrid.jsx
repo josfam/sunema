@@ -29,7 +29,11 @@ function FilmGrid ({ temperature, setBannerMessage }) {
 						console.log('The data is :===> ', data); // DEBUG
 						setFilms(Object.values(data.data));
 						if (data.source === 'samples') {
-							const message = `You are seeing pre-selected sample films, because your TMBD API key was not found.`
+							const message = (
+								<>
+								You are seeing pre-selected sample films, because your <a className='text-link' href='https://github.com/josfam/sunema/tree/main#note-about-api-keys' target='_blank' rel='noopener noreferrer'>TMBD API key</a> was not found.
+								</>
+							);
 							setBannerMessage(message)
 						} else {
 							setBannerMessage('')
