@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import './infoBanner.scss'
+import '../styles/infoBanner.scss'
 
 /** A general-purpose banner for showing informational messages
  * message types can be: note, warning, error
