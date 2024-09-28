@@ -10,3 +10,7 @@
 	background-color: #19304C;
 	border-radius: 20px;
 }
+
+.text-link {
+	text-decoration: underline;
+}
