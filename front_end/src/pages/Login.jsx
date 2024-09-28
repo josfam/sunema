@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
 import '../styles/auth.css'
-import userService from "../services/user-service.js";
+import authService from "../services/auth-service.js";
 import {useNavigate} from "react-router-dom";
 
 /**
@@ -14,7 +14,7 @@ const Login = () => {
     const onSubmit = async (data) => {
         // authenticate user
         try {
-            const response = await userService.authenticateUser(data)
+            const response = await authService.authenticateUser(data)
             if (response.message === 'logged in') {
                 navigate('/');
             }
