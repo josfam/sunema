@@ -57,6 +57,6 @@ Press CTRL+C to quit
 
 ---
 
-You can now go on to run the frontend
+You can now go on to [setup and run the frontend](../front_end/README.md#how-to-manually-install-and-run-the-frontend)
 
 ---
