@@ -1,16 +1,21 @@
 from back_end.views import app_views
-from flask import request, jsonify
+from flask import request, jsonify, abort, redirect
 from back_end.utils.auth import Auth
 from sqlalchemy.orm.exc import NoResultFound
 
-AUTH = Auth()
+"""
+FIX: Normalize usernames to lowercase to prevent duplicate entries 
+with different cases (e.g., 'grace' and 'Grace')
+"""
 
+AUTH = Auth()
 
 @app_views.route("/sessions", methods=["POST"], strict_slashes=False)
 def login():
     """POST /sessions route for user login."""
-    username = request.form.get("username")
-    password = request.form.get("password")
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
     if not AUTH.valid_login(username, password):
         abort(401)  # Unauthorized access
@@ -20,7 +25,7 @@ def login():
         response.set_cookie("session_id", session_id)
         return response
     except (ValueError, NoResultFound):
-        return jsonify({"message": "Error while logging in"}), 401
+        return jsonify({"message": "Error while logging in"}), 500
 
 
 @app_views.route("/sessions", methods=["DELETE"], strict_slashes=False)
@@ -44,8 +49,9 @@ def logout():
 @app_views.route("/users", methods=["POST"], strict_slashes=False)
 def register_user():
     """POST /users route for registering a new user."""
-    username = request.form.get("username")
-    password = request.form.get("password")
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
 
     try:
         user = AUTH.register_user(username, password)
@@ -54,8 +60,7 @@ def register_user():
             200,
         )
     except ValueError:
-        return jsonify({"message": "username already registered"}), 400
-
+        abort(401)
 
 @app_views.route("/profile", methods=["GET"], strict_slashes=False)
 def profile():
