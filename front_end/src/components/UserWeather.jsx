@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
-import "./UserWeather.css"
+import "../styles/UserWeather.css"
 
 /** For the section of the home page that has the user greeting, and the weather
  * details

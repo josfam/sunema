@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import Skeleton from 'react-loading-skeleton';
-import './FilmCard.css'
+import '../styles/FilmCard.css'
 
 /** Returns a film card, which is composed of a film's cover art, and film
  * title underneath that

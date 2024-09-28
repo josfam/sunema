@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import './FilmGrid.css'
+import '../styles/FilmGrid.css'
 import FilmCard from './FilmCard';
 import propTypes from 'prop-types';
 
